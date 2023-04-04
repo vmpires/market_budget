@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+h2,
+p {
+  color: white;
+  margin: 10px;
+}
+
+label {
+  color: white;
+  margin-left: 10px;
+}
+
+input {
+  margin: 0px 10px 10px 10px;
+}
+
+a {
+  margin: 5px;
+  color: white;
+}
+
+button {
+  margin: 10px;
+}

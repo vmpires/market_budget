@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<table>
+<table class="table table-dark">
   <thead>
     <tr>
       <th>Title</th>
@@ -13,7 +13,7 @@
     <% @expenses.each do |expense| %>
       <tr>
         <td><%= expense.title %></td>
-        <td><%= expense.value %></td>
+        <td>R$ <%= expense.value %></td>
         <td><%= link_to 'Show', expense %></td>
         <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
         <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,8 +22,10 @@
   </tbody>
 </table>
 
-<br>
+<button type="button" class="btn btn-secondary">
+  <%= link_to 'New Expense', new_expense_path %>
+</button>
 
-<%= link_to 'New Expense', new_expense_path %>
+
 
 
