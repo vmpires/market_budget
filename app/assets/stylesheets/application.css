@@ -1,3 +1,4 @@
+h1,
 h2,
 p {
   color: white;
@@ -17,7 +18,8 @@ form {
 
 label {
   color: white;
-  margin-left: 5px;
+  margin-left: 15px;
+  margin-bottom: 5px;
 }
 
 input {
@@ -42,9 +44,13 @@ input[type="checkbox"] {
   margin-right: 4px;
 }
 
+.actions {
+  display: flex;
+  flex-direction: column;
+}
+
 .remember-me {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
   margin-top: 20px;
   margin-bottom: 20px;
