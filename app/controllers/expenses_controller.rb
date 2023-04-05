@@ -22,7 +22,8 @@ class ExpensesController < ApplicationController
 
   # POST /expenses or /expenses.json
   def create
-    @expense = current_user.expenses.new(expense_params)
+    params = { title: expense_params[:title], value: expense_params[:value].gsub(',','.') }
+    @expense = current_user.expenses.new(params)
 
     respond_to do |format|
       if @expense.save
@@ -68,4 +69,10 @@ class ExpensesController < ApplicationController
     def expense_params
       params.require(:expense).permit(:title, :value)
     end
+
+    def convert(value)
+      ActionController::Base.helpers.number_to_currency(value.round(2), unit: "R$ ", delimiter: ".", separator: ",")
+    end
+
+    helper_method :convert
 end

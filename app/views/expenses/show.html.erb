@@ -7,7 +7,7 @@
 
 <p>
   <strong>Value:</strong>
-  R$ <%= @expense.value %>
+  <%= convert(@expense.value) %>
 </p>
 
 <%= link_to 'Edit', edit_expense_path(@expense) %> |

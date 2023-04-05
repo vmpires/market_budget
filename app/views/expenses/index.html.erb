@@ -13,7 +13,7 @@
     <% @expenses.each do |expense| %>
       <tr>
         <td><%= expense.title %></td>
-        <td>R$ <%= expense.value.round(2) %></td>
+        <td><%= convert(expense.value) %></td>
         <td><%= link_to 'Show', expense %></td>
         <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
         <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -21,7 +21,11 @@
     <% end %>
       <tr>
         <td><strong>Total spent</strong></td>
-        <td><strong>R$ <%= @expenses.reduce(0) { |acc, item| acc + item.value  }.round(2) %></strong></td>
+        <td>
+          <strong>
+            <%= convert(@expenses.reduce(0) { |acc, item| acc + item.value  }) %>
+          </strong>
+        </td>
         <td></td>
         <td></td>
         <td></td>
