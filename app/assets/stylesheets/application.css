@@ -6,6 +6,7 @@ p {
 }
 
 h3 {
+  color: white;
   margin-top: 10px;
 }
 
@@ -42,6 +43,11 @@ button {
 input[type="checkbox"] {
   margin-top: 6px;
   margin-right: 4px;
+}
+
+em {
+  color: white;
+  margin-left: 15px;
 }
 
 .actions {
