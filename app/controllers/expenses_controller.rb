@@ -4,6 +4,11 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
+    # Loads expenses from current month by default
+    @expenses = current_user.expenses.all.select { |e| e.created_at.month == Date.today.month }
+  end
+
+  def max
     @expenses = current_user.expenses.all
   end
 
@@ -74,5 +79,10 @@ class ExpensesController < ApplicationController
       ActionController::Base.helpers.number_to_currency(value.round(2), unit: "R$ ", delimiter: ".", separator: ",")
     end
 
+    def group_expenses(expenses)
+      expenses.order(created_at: :asc).map { |e| [e.created_at.strftime("%d/%m/%Y"), e.value] }.to_h
+    end
+
     helper_method :convert
+    helper_method :group_expenses
 end

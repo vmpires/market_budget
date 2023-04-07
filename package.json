@@ -1,5 +1,8 @@
 {
   "name": "market_budget",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^4.2.1",
+    "chartkick": "^5.0.1"
+  }
 }

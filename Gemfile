@@ -42,3 +42,5 @@ gem "redis", "~> 5.0"
 gem "devise", "~> 4.9"
 
 gem "bootstrap", "~> 5.2"
+
+gem "chartkick"

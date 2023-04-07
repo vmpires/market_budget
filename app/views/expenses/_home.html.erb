@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<%= line_chart @group, colors: ["green", "red"] %>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.title %></td>
+        <td><%= convert(expense.value) %></td>
+        <td><%= link_to 'Show', expense %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+      <tr>
+        <td><strong>Total spent</strong></td>
+        <td>
+          <strong>
+            <%= convert(@expenses.reduce(0) { |acc, item| acc + item.value  }) %>
+          </strong>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+<%= render 'periods' %>
+<button type="button" class="btn btn-success">
+  <%= link_to 'New Expense', new_expense_path %>
+</button>
