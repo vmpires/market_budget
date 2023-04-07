@@ -4,7 +4,7 @@
 <%= line_chart group_expenses(@expenses), colors: ["#198754", "#666"], curve: false %>
 <br>
 <div class="home-title">
-    <% if request.path == "/expenses" %>
+    <% if request.path == "/expenses" || request.path == "/" %>
         <h4>Current Month</h4>
     <% else %>
         <h4><%= request.path.gsub("/","").gsub("_", " ").gsub('six', '6').gsub('twelve', '12').capitalize %></h4>
