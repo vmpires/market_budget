@@ -11,6 +11,10 @@ p {
   margin: 10px;
 }
 
+li {
+  color: var(--text-color);
+}
+
 h3,
 h4 {
   color: var(--text-color);

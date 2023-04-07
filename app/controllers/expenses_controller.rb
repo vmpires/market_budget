@@ -97,6 +97,7 @@ class ExpensesController < ApplicationController
     end
 
     def convert(value)
+      return if value.nil?
       ActionController::Base.helpers.number_to_currency(value.round(2), unit: "R$ ", delimiter: ".", separator: ",")
     end
 
