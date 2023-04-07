@@ -48,7 +48,7 @@ class ExpensesController < ApplicationController
 
   # POST /expenses or /expenses.json
   def create
-    params = { title: expense_params[:title], value: expense_params[:value].gsub(',','.') }
+    params = { title: expense_params[:title], value: expense_params[:value].gsub(',','.'), created_at: expense_params[:created_at] }
     @expense = current_user.expenses.new(params)
 
     respond_to do |format|
@@ -93,7 +93,7 @@ class ExpensesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expense_params
-      params.require(:expense).permit(:title, :value)
+      params.require(:expense).permit(:title, :value, :created_at)
     end
 
     def convert(value)
