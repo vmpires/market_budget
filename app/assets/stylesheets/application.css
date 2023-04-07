@@ -101,3 +101,12 @@ em {
 h5 {
   color: var(--text-color);
 }
+
+.notices p {
+  text-align: center;
+}
+
+#notice {
+  color: var(--primary-color);
+  text-align: center;
+}
