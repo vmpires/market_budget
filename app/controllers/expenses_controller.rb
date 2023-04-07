@@ -5,7 +5,9 @@ class ExpensesController < ApplicationController
   # GET /expenses or /expenses.json
   def index
     # Loads expenses from current month by default
-    @expenses = current_user.expenses.all.select { |e| e.created_at.month == Date.today.month }
+    start_date = Date.today.beginning_of_month
+    end_date = Date.today.end_of_month
+    @expenses = current_user.expenses.all.where(created_at: start_date..end_date)
   end
 
   def max
