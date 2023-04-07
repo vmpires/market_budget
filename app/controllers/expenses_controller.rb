@@ -7,11 +7,30 @@ class ExpensesController < ApplicationController
     # Loads expenses from current month by default
     start_date = Date.today.beginning_of_month
     end_date = Date.today.end_of_month
-    @expenses = current_user.expenses.all.where(created_at: start_date..end_date)
+    @expenses = current_user.expenses.all.order(created_at: :asc).where(created_at: start_date..end_date)
   end
 
   def max
-    @expenses = current_user.expenses.all
+    @expenses = current_user.expenses.all.order(created_at: :asc)
+  end
+
+  def ytd
+    current_year = Date.today.year
+    start_date = Date.new(current_year,1,1)
+    end_date = Date.new(current_year,12,31)
+    @expenses = current_user.expenses.all.order(created_at: :asc).where(created_at: start_date..end_date)
+  end
+
+  def six_months
+    start_date = Date.today - 6.months
+    end_date = Date.today
+    @expenses = current_user.expenses.all.order(created_at: :asc).where(created_at: start_date..end_date)
+  end
+
+  def twelve_months
+    start_date = Date.today - 1.year
+    end_date = Date.today
+    @expenses = current_user.expenses.all.order(created_at: :asc).where(created_at: start_date..end_date)
   end
 
   # GET /expenses/1 or /expenses/1.json
@@ -81,10 +100,15 @@ class ExpensesController < ApplicationController
       ActionController::Base.helpers.number_to_currency(value.round(2), unit: "R$ ", delimiter: ".", separator: ",")
     end
 
+    def convert_date(date)
+      date.strftime("%d/%m/%Y")
+    end
+
     def group_expenses(expenses)
-      expenses.order(created_at: :asc).map { |e| [e.created_at.strftime("%d/%m/%Y"), e.value] }.to_h
+      expenses.map { |e| [e.created_at, e.value] }.to_h
     end
 
     helper_method :convert
+    helper_method :convert_date
     helper_method :group_expenses
 end

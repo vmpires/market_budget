@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @expense.title %>
-</p>
+<div class="card text-center">
+  <div class="card-body">
+    <h4 class="card-title"><%= @expense.title %></h4>
+    <h5 class="card-text"><%= convert(@expense.value) %></h5>
+    <button class="btn btn-success"><%= link_to 'Edit', edit_expense_path(@expense) %></button>
+    <button class="btn btn-success"><%= link_to 'New Expense', new_expense_path %></button>
+    <button class="btn btn-success"><%= link_to 'Back', expenses_path %></button>
+  </div>
+</div>
 
-<p>
-  <strong>Value:</strong>
-  <%= convert(@expense.value) %>
-</p>
-
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>

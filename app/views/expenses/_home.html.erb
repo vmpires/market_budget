@@ -1,10 +1,22 @@
 <p id="notice"><%= notice %></p>
-<%= line_chart group_expenses(@expenses), colors: ["green", "red"] %>
+<%= line_chart group_expenses(@expenses), colors: ["#198754", "#666"], curve: false %>
+<br>
+<div class="home-title">
+    <% if request.path == "/expenses" %>
+        <h4>Current Month</h4>
+    <% else %>
+        <h4><%= request.path.gsub("/","").gsub("_", " ").gsub('six', '6').gsub('twelve', '12').capitalize %></h4>
+    <% end %>
+</div>
+<br>
+<%= render 'periods' %>
+<br>
 <table class="table table-dark">
   <thead>
     <tr>
       <th>Title</th>
       <th>Value</th>
+      <th>Date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +26,7 @@
       <tr>
         <td><%= expense.title %></td>
         <td><%= convert(expense.value) %></td>
+        <td><%= convert_date(expense.created_at) %></td>
         <td><%= link_to 'Show', expense %></td>
         <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
         <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -32,7 +45,8 @@
       </tr>
   </tbody>
 </table>
-<%= render 'periods' %>
-<button type="button" class="btn btn-success">
-  <%= link_to 'New Expense', new_expense_path %>
-</button>
+<div class="bottom-button-group">
+    <button type="button" class="btn btn-success">
+    <%= link_to 'New Expense...', new_expense_path %>
+    </button>
+</div>
