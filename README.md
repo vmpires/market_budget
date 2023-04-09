@@ -1,24 +1,21 @@
-# README
+# Market Budget
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Simple web page using Ruby On Rails and PostgreSQL
 
-Things you may want to cover:
+![Image](https://github.com/vmpires/vmpires/blob/main/market_budget%201.jpg)
 
-* Ruby version
+##### [Link to the project](shorturl.at/eotIV)
 
-* System dependencies
+To execute: 1) First, make sure you have Ruby(^2.6.5) installed and a PostgreSQL Server running. 2) Clone the project 3) All the following commands must be run inside the project folder:
 
-* Configuration
+`rails db:create`
 
-* Database creation
+`rails db:migrate`
 
-* Database initialization
+`rails db:seed` (optional, in case you want to see some data on)
 
-* How to run the test suite
+`rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
+The last one will start your server on localhost:3000 and you're good to go.
 
-* Deployment instructions
-
-* ...
+See ya!
