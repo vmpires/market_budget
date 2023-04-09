@@ -1,7 +1,13 @@
 <div class="notices">
     <p id="notice"><strong><%= notice %></strong></p>
 </div>
-<%= line_chart group_expenses(@expenses), colors: ["#198754", "#666"], curve: false %>
+<% if @expenses.present? %>
+    <%= line_chart group_expenses(@expenses), colors: ["#198754", "#666"], curve: false %>
+<% else %>
+    <p style="text-align: center">
+        Oops, it seems like you don't have any expenses yet...
+    </p>
+<% end %>
 <br>
 <div class="home-title">
     <% if request.path == "/expenses" || request.path == "/" %>

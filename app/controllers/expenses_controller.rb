@@ -48,9 +48,12 @@ class ExpensesController < ApplicationController
 
   # POST /expenses or /expenses.json
   def create
-    params = { title: expense_params[:title], value: expense_params[:value].gsub(',','.'), created_at: expense_params[:created_at] }
+    params = { 
+      title: expense_params[:title],
+      value: expense_params[:value].gsub(',','.'),
+      created_at: expense_params[:created_at]
+    }
     @expense = current_user.expenses.new(params)
-
     respond_to do |format|
       if @expense.save
         format.html { redirect_to expense_url(@expense), notice: "Expense was successfully created!" }
@@ -80,7 +83,7 @@ class ExpensesController < ApplicationController
     @expense.destroy
 
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: "Expense was successfully destroyed." }
+      format.html { redirect_to expenses_url, notice: "Expense was successfully destroyed!" }
       format.json { head :no_content }
     end
   end
@@ -106,7 +109,8 @@ class ExpensesController < ApplicationController
     end
 
     def group_expenses(expenses)
-      expenses.map { |e| [e.created_at, e.value] }.to_h
+      expenses = expenses.map { |e| {date: e.created_at.strftime("%m/%d/%Y"), value: e.value} }
+      expenses.group_by { |d| d[:date] }.transform_values { |values| values.reduce(0) { |sum, v| sum + v[:value] } }
     end
 
     helper_method :convert
