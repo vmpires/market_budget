@@ -1,6 +1,6 @@
 # Market Budget
 
-### Simple web page using Ruby On Rails and PostgreSQL
+### Simple web page for expenses control, using Ruby On Rails and PostgreSQL.
 
 ![Image](https://github.com/vmpires/vmpires/blob/main/market_budget.jpg)
 
