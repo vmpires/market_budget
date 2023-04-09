@@ -30,7 +30,11 @@
 
   <div class="field form-group">
     <%= form.label :date, required: true %>
+  <% if request.path =~ /new/ %>
     <%= form.text_field :created_at, class: "form-control", placeholder: "__/__/____", value: Date.today.strftime("%d/%m/%Y") %>
+  <% else %>
+    <%= form.text_field :created_at, class: "form-control", placeholder: "__/__/____", value: @expense.created_at.strftime("%d/%m/%Y") %>
+  <% end %>
   </div>
   <br>
   <div class="actions">
