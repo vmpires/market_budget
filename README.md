@@ -16,6 +16,6 @@ To execute: 1) First, make sure you have Ruby(^2.6.5) installed and a PostgreSQL
 
 The last one will start your server on localhost:3000 and you're good to go.
 
-##### Link to the project: shorturl.at/eotIV
+##### [Link to the project](https://shorturl.at/eotIV)
 
 See ya!
